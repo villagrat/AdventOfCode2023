@@ -38,18 +38,49 @@ const first = (input: string) => {
 const expectedFirstSolution = 55621;
 
 const second = (input: string) => {
-  let startIdx = 0;
+  let lineStartIdx = 0;
   let calibrationSum = 0;
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n") {
-      const line = input.slice(startIdx, i);
+      const line = input.slice(lineStartIdx, i);
       console.log("----");
       console.log(line);
       console.log(". . . . . . . . . . ");
       // Build an array with our new definition of digit: either a single digit or the word for it (one,two,etc.)
-      const AllNumInLineArr = line.match(
-        /(one|two|three|four|five|six|seven|eight|nine|\d)/g
-      );
+      /*
+      Bugfix: 
+      - given the word twone I was matching "two" in regex
+      - JS doesnt support overlapping matches so we need to do it manually
+      - Manually iterate over the string and check for a match at each position
+      */
+      // const AllNumInLineArr = line.match(
+      //   /(one|two|six|four|five|nine|eight|seven|three|\d)/g
+      // ); // this will not match twone as ["two", "one"]
+      const words = [
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+      ];
+      const AllNumInLineArr = [];
+      for (let i = 0; i < line.length; i++) {
+        for (const word of words) {
+          // If a representation of a digit is found, add it to the array
+          if (line.substr(i, word.length) === word) {
+            AllNumInLineArr.push(word);
+            break;
+          }
+        }
+        // Add digits
+        if (!isNaN(parseInt(line[i]))) {
+          AllNumInLineArr.push(line[i]);
+        }
+      }
       console.log("AllNumInLineArr: ", AllNumInLineArr);
       const startNumber = AllNumInLineArr[0];
       const endNumber = AllNumInLineArr[AllNumInLineArr.length - 1];
@@ -93,7 +124,7 @@ const second = (input: string) => {
         console.log(`And sum is now: ${calibrationSum}`);
       }
       console.log("----");
-      startIdx = i + 1;
+      lineStartIdx = i + 1;
     }
   }
 
@@ -101,7 +132,6 @@ const second = (input: string) => {
 };
 
 // 53587 is too low!
-
-const expectedSecondSolution = "solution 2";
+const expectedSecondSolution = 53592;
 
 export { first, expectedFirstSolution, second, expectedSecondSolution };
