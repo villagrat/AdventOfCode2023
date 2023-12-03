@@ -42,7 +42,6 @@ const first = (input: string) => {
         console.log(`Their calculated value is: ${calculatedValue}`);
         result += Number(calculatedValue);
       }
-      console.log("-------------------------------------------------------------------------------------------------------------------------------");
       startIdx = i + 1;
     }
   }
@@ -94,7 +93,6 @@ const second = (input: string) => {
         // console.log(`Their calculated value is: ${calculatedValue}`);
         result += Number(calculatedValue);
       }
-      // console.log("-------------------------------------------------------------------------------------------------------------------------------");
       startIdx = i + 1;
     }
   }

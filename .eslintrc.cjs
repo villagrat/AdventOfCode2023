@@ -70,6 +70,7 @@ module.exports = {
     "space-before-function-paren": "off",
     "prefer-template": "error",
     "no-useless-concat": "error",
+    "no-useless-escape": "off",
     "eol-last": ["error", "always"],
     "template-curly-spacing": ["error", "never"],
     "no-multiple-empty-lines": "off",
