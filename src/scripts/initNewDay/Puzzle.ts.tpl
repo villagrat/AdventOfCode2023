@@ -19,16 +19,16 @@ const first = (input: string) => {
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n") {
       const line = input.slice(startIdx, i);
-      console.log("----");
+      console.log("-------------------------------------------------------------------------------------------------------------------------------");
       console.log(line);
-      console.log(". . . . . . . . . . ");
+      console.log("");
       const condition1 = line.match(/\d/);
       const condition2 = line.match(/\d/);
       console.log(`condition1 value: ${condition1}, condition2: ${condition2}`);
       console.log(
         `Calculated value is: ${Number(condition1) + Number(condition2)}`
       );
-      console.log(". . . . . . . . . . ");
+      console.log("");
       if (condition1 && condition2) {
         console.log(
           `This is a pair I matched: condition1: ${condition1}, condition2: ${condition2}`
@@ -42,7 +42,7 @@ const first = (input: string) => {
         console.log(`Their calculated value is: ${calculatedValue}`);
         result += Number(calculatedValue);
       }
-      console.log("----");
+      console.log("-------------------------------------------------------------------------------------------------------------------------------");
       startIdx = i + 1;
     }
   }
@@ -73,14 +73,14 @@ const second = (input: string) => {
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n") {
       const line = input.slice(startIdx, i);
-      // console.log("----");
+      // console.log("-------------------------------------------------------------------------------------------------------------------------------");
       // console.log(line);
-      // console.log(". . . . . . . . . . ");
+      // console.log("");
       const condition1 = line.match(/\d/);
       const condition2 = line.match(/\d/);
       // console.log(`condition1 value: ${condition1}, condition2: ${condition2}`);
       // console.log(`Calculated value is: ${condition1 + condition2}`);
-      // console.log(". . . . . . . . . . ");
+      // console.log("");
       if (condition1 && condition2) {
         // console.log(
         //   `This is a pair I matched: condition1: ${condition1}, condition2: ${condition2}`
@@ -94,7 +94,7 @@ const second = (input: string) => {
         // console.log(`Their calculated value is: ${calculatedValue}`);
         result += Number(calculatedValue);
       }
-      // console.log("----");
+      // console.log("-------------------------------------------------------------------------------------------------------------------------------");
       startIdx = i + 1;
     }
   }
