@@ -1,14 +1,17 @@
 # Advent Of Code 2023
-*Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.*
 
-*The objective is to reach '50 stars' ~ 50 problems solved by Christmas*
+_Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other._
+
+_The objective is to reach '50 stars' ~ 50 problems solved by Christmas_
 
 ###### Current progress
-__0/50__ :star:
+
+**1/50** :star:
 
 [link to this year's problems](https://adventofcode.com)
 
 built with:
+
 - [typescript](https://www.typescriptlang.org/) 👨‍💻
 - [vitest](https://vitest.dev/) 🧪
 - [bun](https://bun.sh/) 🧅
@@ -49,17 +52,17 @@ The structure of the boilerplate module is the following:
 ```typescript
 const first = (input: string) => {
   console.log(input);
-  return 'solution 1';
+  return "solution 1";
 };
 
-const expectedFirstSolution = 'solution 1';
+const expectedFirstSolution = "solution 1";
 
 const second = (input: string) => {
   console.log(input);
-  return 'solution 2';
+  return "solution 2";
 };
 
-const expectedSecondSolution = 'solution 2';
+const expectedSecondSolution = "solution 2";
 
 export { first, expectedFirstSolution, second, expectedSecondSolution };
 ```
@@ -71,7 +74,6 @@ When your solution is ready, or when you want to start developing incrementally 
 ## 🧪 Testing
 
 You can run test for all puzzles agains their expected output with `pnpm t` this will test all the solutions in the `days` folder
-
 
 ## 👨👩 TS Boilerplate Creator
 
