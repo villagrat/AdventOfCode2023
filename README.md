@@ -1,9 +1,14 @@
-# 🎄 AdventOfCode-typescript-template 🎄
+# Advent Of Code 2023
+*Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.*
 
-This is a TypeScript boilerplate for Advent of Code.
+*The objective is to reach '50 stars' ~ 50 problems solved by Christmas*
 
-built with ❤️ and:
+###### Current progress
+__0/50__ :star:
 
+[link to this year's problems](https://adventofcode.com)
+
+built with:
 - [typescript](https://www.typescriptlang.org/) 👨‍💻
 - [vitest](https://vitest.dev/) 🧪
 - [bun](https://bun.sh/) 🧅
@@ -67,11 +72,7 @@ When your solution is ready, or when you want to start developing incrementally 
 
 You can run test for all puzzles agains their expected output with `pnpm t` this will test all the solutions in the `days` folder
 
-## 🛫 Contributing
 
-Every contribution is welcome. Just fork this repo and open a MR with your changes, and don't forget to add your name to the contributors section of this README.
-
-## 👨👩 Contributors
+## 👨👩 TS Boilerplate Creator
 
 [Francesco Maida](https://edge33.github.io)
-# AdventOfCode2023
