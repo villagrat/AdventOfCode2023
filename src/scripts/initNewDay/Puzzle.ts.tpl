@@ -19,7 +19,6 @@ const first = (input: string) => {
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n") {
       const line = input.slice(startIdx, i);
-      console.log("-------------------------------------------------------------------------------------------------------------------------------");
       console.log(line);
       console.log("");
       const condition1 = line.match(/\d/);
@@ -28,7 +27,6 @@ const first = (input: string) => {
       console.log(
         `Calculated value is: ${Number(condition1) + Number(condition2)}`
       );
-      console.log("");
       if (condition1 && condition2) {
         console.log(
           `This is a pair I matched: condition1: ${condition1}, condition2: ${condition2}`
@@ -43,9 +41,12 @@ const first = (input: string) => {
         result += Number(calculatedValue);
       }
       startIdx = i + 1;
+      console.log("");
+      console.log("-------------------------------------------------------------------------------------------------------------------------------");
     }
   }
 
+  console.log("result: ", result)
   return result;
 };
 
@@ -72,14 +73,12 @@ const second = (input: string) => {
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n") {
       const line = input.slice(startIdx, i);
-      // console.log("-------------------------------------------------------------------------------------------------------------------------------");
       // console.log(line);
       // console.log("");
       const condition1 = line.match(/\d/);
       const condition2 = line.match(/\d/);
       // console.log(`condition1 value: ${condition1}, condition2: ${condition2}`);
       // console.log(`Calculated value is: ${condition1 + condition2}`);
-      // console.log("");
       if (condition1 && condition2) {
         // console.log(
         //   `This is a pair I matched: condition1: ${condition1}, condition2: ${condition2}`
@@ -94,9 +93,13 @@ const second = (input: string) => {
         result += Number(calculatedValue);
       }
       startIdx = i + 1;
+      // console.log("");
+      // console.log("-------------------------------------------------------------------------------------------------------------------------------");
     }
   }
 
+    // console.log("result: ", result)
+    return result
 };
 
 const expectedSecondSolution = "solution 2";
