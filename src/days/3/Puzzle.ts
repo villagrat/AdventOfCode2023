@@ -42,31 +42,31 @@ const first = (input: string) => {
   const matrix = input.split("\n");
   let result = 0;
 
-  console.log("");
-  console.log("matrix: ", matrix);
-  console.log("");
+  // console.log("");
+  // console.log("matrix: ", matrix);
+  // console.log("");
 
   for (let i = 0; i < matrix.length; i++) {
     const numbers = matrix[i].replace(/\./g, " ");
-    console.log("");
-    console.log("for i: ", i);
-    console.log("numbers - not dots: ", numbers);
-    console.log("");
+    // console.log("");
+    // console.log("for i: ", i);
+    // console.log("numbers - not dots: ", numbers);
+    // console.log("");
     const regex = /\d+/g;
     let match;
     while ((match = regex.exec(numbers)) !== null) {
       for (let j = match.index; j < match.index + match[0].length; j++) {
-        console.log("");
-        console.log(
-          "These are the cells surrounding cell with value: ",
-          match[0]
-        );
-        console.log("matrix[i][j]: ", matrix[i][j]);
-        console.log("I: ", i);
-        console.log("J: ", j);
-        console.log("match.index: ", match.index);
-        console.log("match[0].length: ", match[0].length);
-        console.log("");
+        // console.log("");
+        // console.log(
+        //   "These are the cells surrounding cell with value: ",
+        //   match[0]
+        // );
+        // console.log("matrix[i][j]: ", matrix[i][j]);
+        // console.log("I: ", i);
+        // console.log("J: ", j);
+        // console.log("match.index: ", match.index);
+        // console.log("match[0].length: ", match[0].length);
+        // console.log("");
 
         const surrounding = [
           (matrix[i - 1] ?? "")[j - 1] ?? ".",
@@ -79,9 +79,9 @@ const first = (input: string) => {
           (matrix[i + 1] ?? "")[j] ?? ".",
           (matrix[i + 1] ?? "")[j + 1] ?? ".",
         ];
-        console.log("");
-        console.log("surrounding: ", surrounding);
-        console.log("");
+        // console.log("");
+        // console.log("surrounding: ", surrounding);
+        // console.log("");
         // Check if any of the surrounding characters are not numbers
         if (surrounding.some((x) => /[^0-9.]/.test(x))) {
           result += parseInt(match[0]);
@@ -91,58 +91,79 @@ const first = (input: string) => {
     }
   }
 
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
 const expectedFirstSolution = 525181;
 
 const second = (input: string) => {
-  let startIdx = 0;
-  let result = 0;
   /*
       --- Info ---
-      -
-      
+      - Need to fix a gear in the engine
+      - A gear any * symbol that is adjecent to exactly two part numbers
+      - It's gear ratio is the result of multiplying those two part numbers together
+      - Need to find the gear ratio of every gear and add them all up
+
       --- Key takeaways ---
       -
 
       --- Calculated value ---
       -
 
-      --- Eg of a game played: ---
-
+      --- Eg of an engine schematic: ---
+      467..114..
+      ...*......
+      ..35..633.
+      ......#...
+      617*......
+      .....+.58.
+      ..592.....
+      ......755.
+      ...$.*....
+      .664.598..
+      
       Expected Sol:
-
+      In this schematic we have two gears
+      First being in the top left, with gear ratio 467 * 35 = 16345
+      Second being in the bottom right, with gear ratio 598 * 755 = 451490
+      The sum of both these gear ratios is 467835
       */
-  for (let i = 0; i < input.length; i++) {
-    if (input[i] === "\n") {
-      const line = input.slice(startIdx, i);
-      // console.log("-------------------------------------------------------------------------------------------------------------------------------");
-      // console.log(line);
-      // console.log(". . . . . . . . . . ");
-      const condition1 = line.match(/\d/);
-      const condition2 = line.match(/\d/);
-      // console.log(`condition1 value: ${condition1}, condition2: ${condition2}`);
-      // console.log(`Calculated value is: ${condition1 + condition2}`);
-      // console.log(". . . . . . . . . . ");
-      if (condition1 && condition2) {
-        // console.log(
-        //   `This is a pair I matched: condition1: ${condition1}, condition2: ${condition2}`
-        // );
-        // console.log(
-        //   `Their types are: ${typeof Number(condition1)}, ${typeof Number(
-        //     condition2
-        //  )}`
-        //  );
-        const calculatedValue = Number(condition1) + Number(condition2);
-        // console.log(`Their calculated value is: ${calculatedValue}`);
-        result += Number(calculatedValue);
+  const matrix = input.split("\n");
+  let result: number = 0;
+
+  console.log("");
+  console.log("matrix: ", matrix);
+  console.log("");
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] === "*") {
+        const surrounding = [
+          matrix[i - 1]?.[j - 1] ?? ".",
+          matrix[i - 1]?.[j] ?? ".",
+          matrix[i - 1]?.[j + 1] ?? ".",
+          matrix[i]?.[j - 1] ?? ".",
+          matrix[i]?.[j + 1] ?? ".",
+          matrix[i + 1]?.[j - 1] ?? ".",
+          matrix[i + 1]?.[j] ?? ".",
+          matrix[i + 1]?.[j + 1] ?? ".",
+        ];
+
+        console.log(
+          `* found at (${i}, ${j}), surrounding cells: ${surrounding}`
+        );
+
+        const numbers = surrounding.filter((x) => /\d+/.test(x));
+
+        if (numbers.length === 2) {
+          result += parseInt(numbers[0]) * parseInt(numbers[1]);
+        }
       }
-      // console.log("-------------------------------------------------------------------------------------------------------------------------------");
-      startIdx = i + 1;
     }
   }
+  console.log(result);
+  return result;
 };
 
 const expectedSecondSolution = "solution 2";
