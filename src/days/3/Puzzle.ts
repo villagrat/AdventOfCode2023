@@ -130,39 +130,80 @@ const second = (input: string) => {
       The sum of both these gear ratios is 467835
       */
   const matrix = input.split("\n");
-  let result: number = 0;
+  let result = 0;
+  const numbers = [];
+  const gears = [];
 
-  console.log("");
-  console.log("matrix: ", matrix);
-  console.log("");
+  // First pass: gather all the numbers and their positions
+  for (let i = 0; i < matrix.length; i++) {
+    let value = "";
+    let positions = [];
 
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (/\d+/.test(matrix[i][j])) {
+        value += matrix[i][j];
+        positions.push({ i, j });
+      } else if (value !== "") {
+        numbers.push({ value: parseInt(value), positions });
+        value = "";
+        positions = [];
+      }
+    }
+
+    if (value !== "") {
+      numbers.push({ value: parseInt(value), positions });
+    }
+  }
+  // Second pass: for each '*', check the surrounding cells against the positions of the numbers
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
       if (matrix[i][j] === "*") {
         const surrounding = [
-          matrix[i - 1]?.[j - 1] ?? ".",
-          matrix[i - 1]?.[j] ?? ".",
-          matrix[i - 1]?.[j + 1] ?? ".",
-          matrix[i]?.[j - 1] ?? ".",
-          matrix[i]?.[j + 1] ?? ".",
-          matrix[i + 1]?.[j - 1] ?? ".",
-          matrix[i + 1]?.[j] ?? ".",
-          matrix[i + 1]?.[j + 1] ?? ".",
+          { i: i - 1, j: j - 1 },
+          { i: i - 1, j: j },
+          { i: i - 1, j: j + 1 },
+          { i: i, j: j - 1 },
+          { i: i, j: j + 1 },
+          { i: i + 1, j: j - 1 },
+          { i: i + 1, j: j },
+          { i: i + 1, j: j + 1 },
         ];
 
-        console.log(
-          `* found at (${i}, ${j}), surrounding cells: ${surrounding}`
-        );
+        let touchingNumbers = [];
 
-        const numbers = surrounding.filter((x) => /\d+/.test(x));
+        for (let number of numbers) {
+          for (let position of number.positions) {
+            if (
+              surrounding.some((s) => s.i === position.i && s.j === position.j)
+            ) {
+              console.log("Found a touching number: ", number.value);
+              console.log(
+                "Because it is included in surrounding: ",
+                surrounding
+              );
+              console.log("in position: ", position);
+              touchingNumbers.push(number.value);
+              break;
+            }
+          }
+        }
 
-        if (numbers.length === 2) {
-          result += parseInt(numbers[0]) * parseInt(numbers[1]);
+        if (touchingNumbers.length === 2) {
+          gears.push({ i, j, numbers: touchingNumbers });
         }
       }
     }
   }
-  console.log(result);
+
+  console.log("numbers in matrix", numbers);
+  console.log("gears in matrix", gears);
+
+  // Calculate gear ratio and add to result
+  for (let gear of gears) {
+    result += gear.numbers[0] * gear.numbers[1];
+  }
+
+  console.log("Part 2 result: ", result);
   return result;
 };
 
