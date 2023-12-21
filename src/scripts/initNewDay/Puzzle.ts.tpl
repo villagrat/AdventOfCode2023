@@ -11,7 +11,7 @@ const first = (input: string) => {
       --- Calculated value ---
       -
 
-      --- Eg of a game played: ---
+      --- Eg: ---
 
       Expected Sol:
 
@@ -65,7 +65,7 @@ const second = (input: string) => {
       --- Calculated value ---
       -
 
-      --- Eg of a game played: ---
+      --- Eg: ---
 
       Expected Sol:
 
