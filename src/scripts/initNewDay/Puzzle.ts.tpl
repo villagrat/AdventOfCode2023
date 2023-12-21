@@ -1,6 +1,4 @@
 const first = (input: string) => {
-  let startIdx = 0;
-  let result = 0;
   /*
       --- Info ---
       -
@@ -16,6 +14,8 @@ const first = (input: string) => {
       Expected Sol:
 
       */
+  let startIdx = 0;
+  let result = 0;
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n") {
       const line = input.slice(startIdx, i);
@@ -53,8 +53,6 @@ const first = (input: string) => {
 const expectedFirstSolution = "solution 1";
 
 const second = (input: string) => {
-  let startIdx = 0;
-  let result = 0;
     /*
       --- Info ---
       -
@@ -70,6 +68,8 @@ const second = (input: string) => {
       Expected Sol:
 
       */
+  let startIdx = 0;
+  let result = 0;
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n") {
       const line = input.slice(startIdx, i);
