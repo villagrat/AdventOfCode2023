@@ -43,9 +43,9 @@ const second = (input: string) => {
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n") {
       const line = input.slice(lineStartIdx, i);
-      console.log("----");
-      console.log(line);
-      console.log(". . . . . . . . . . ");
+      // console.log("----");
+      // console.log(line);
+      // console.log(". . . . . . . . . . ");
       // Build an array with our new definition of digit: either a single digit or the word for it (one,two,etc.)
       /*
       Bugfix: 
@@ -81,14 +81,14 @@ const second = (input: string) => {
           AllNumInLineArr.push(line[i]);
         }
       }
-      console.log("AllNumInLineArr: ", AllNumInLineArr);
+      // console.log("AllNumInLineArr: ", AllNumInLineArr);
       const startNumber = AllNumInLineArr[0];
       const endNumber = AllNumInLineArr[AllNumInLineArr.length - 1];
 
-      console.log(". . . . . . . .  ");
-      console.log("Found startNumber: ", startNumber);
-      console.log("Found endNumber: ", endNumber);
-      console.log(" . . . . . . . . ");
+      // console.log(". . . . . . . .  ");
+      // console.log("Found startNumber: ", startNumber);
+      // console.log("Found endNumber: ", endNumber);
+      // console.log(" . . . . . . . . ");
 
       // translate the words into numbers
       // only if they are a word (not a digit)
@@ -112,18 +112,18 @@ const second = (input: string) => {
         ? NumToWordMap[endNumber]
         : endNumber;
 
-      console.log(
-        `--> Calibration value is: ${
-          transaltedStartNumber + transaltedEndNumber
-        }`
-      );
-      console.log(". . . . . . . . . . ");
+      // console.log(
+      //   `--> Calibration value is: ${
+      //     transaltedStartNumber + transaltedEndNumber
+      //   }`
+      // );
+      // console.log(". . . . . . . . . . ");
       if (transaltedStartNumber && transaltedEndNumber) {
         const calibrationValue = transaltedStartNumber + transaltedEndNumber;
         calibrationSum += Number(calibrationValue);
-        console.log(`And sum is now: ${calibrationSum}`);
+        // console.log(`And sum is now: ${calibrationSum}`);
       }
-      console.log("----");
+      // console.log("----");
       lineStartIdx = i + 1;
     }
   }

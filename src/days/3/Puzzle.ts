@@ -169,19 +169,19 @@ const second = (input: string) => {
           { i: i + 1, j: j + 1 },
         ];
 
-        let touchingNumbers = [];
+        const touchingNumbers = [];
 
-        for (let number of numbers) {
-          for (let position of number.positions) {
+        for (const number of numbers) {
+          for (const position of number.positions) {
             if (
               surrounding.some((s) => s.i === position.i && s.j === position.j)
             ) {
-              console.log("Found a touching number: ", number.value);
-              console.log(
-                "Because it is included in surrounding: ",
-                surrounding
-              );
-              console.log("in position: ", position);
+              // console.log("Found a touching number: ", number.value);
+              // console.log(
+              //   "Because it is included in surrounding: ",
+              //   surrounding
+              // );
+              // console.log("in position: ", position);
               touchingNumbers.push(number.value);
               break;
             }
@@ -195,15 +195,15 @@ const second = (input: string) => {
     }
   }
 
-  console.log("numbers in matrix", numbers);
-  console.log("gears in matrix", gears);
+  // console.log("numbers in matrix", numbers);
+  // console.log("gears in matrix", gears);
 
   // Calculate gear ratio and add to result
-  for (let gear of gears) {
+  for (const gear of gears) {
     result += gear.numbers[0] * gear.numbers[1];
   }
 
-  console.log("Part 2 result: ", result);
+  // console.log("Part 2 result: ", result);
   return result;
 };
 
