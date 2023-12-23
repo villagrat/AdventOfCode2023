@@ -133,7 +133,7 @@ const second = (input: string) => {
 
   let result = 0;
   for (let i = 0; i < input.length; i++) {
-    if (input[i] === "\n" || i === input.length - 1) {
+    if ((input[i] === "\n" || i === input.length - 1) && startIdx !== i) {
       const line = input.slice(startIdx, i).trim();
       const cardTitle = line.split(":")[0].trim();
       const cardNumber = Number(cardTitle.match(/\d+/)[0]);
@@ -155,35 +155,28 @@ const second = (input: string) => {
 
       const commonNumbers = Array.from(yours).filter((num) => winning.has(num));
       const matches = commonNumbers.length;
-      const instances = scratchcards[cardNumber];
-      console.log("Current card number: ", cardNumber);
-      console.log("Current amount of instances of this card: ", instances);
-      console.log(`Number of your matches present in winning: ${matches}`);
 
+      console.log("Current card number: ", cardNumber);
       // If there are matches, add the number of matches to the scratchcards array
       if (matches > 0) {
-        // - C1 has 4 matching numbers, so you win 1 copy each of the next 4 cards (C2, C3, C4, C5)
-        // [1,1,1,1,1,1]
         console.log(
-          `card ${cardNumber} has ${matches} matches, so you win ${cardNumber} copy each of the next ${matches} cards`
+          `We have some ${matches} winning numbers, they are ${commonNumbers}`
         );
-        console.log("The next 4 cards have indexes in the scratchcard array: ");
-        for (let idx = cardNumber; idx < cardNumber + matches; idx++) {
-          console.log("currIdx", idx);
-          console.log("");
-          console.log("scratchcards before: ", scratchcards);
-          console.log("");
-          console.log(
-            "Should add ",
-            cardNumber,
-            " to scratchcards on scratchcards on index:  ",
-            Number(idx)
-          );
-          scratchcards[Number(idx)] += Number(cardNumber);
-          console.log("");
-          console.log("scratchcards is now: ", scratchcards);
-          console.log("");
+        const instances = scratchcards[cardNumber - 1];
+        console.log("");
+        console.log("Snapshot @ start of all our cards: ", scratchcards);
+        console.log("");
+        console.log;
+        console.log(
+          `Your ${instances} instances of card ${cardNumber} have ${matches} matching numbers, so you win ${instances} for the next ${matches} cards`
+        );
+        const endIdx = Math.min(cardNumber + matches, scratchcards.length);
+        for (let idx = cardNumber; idx < endIdx; idx++) {
+          scratchcards[idx] += instances;
         }
+        console.log("");
+        console.log("Snapshot @ end of all our cards: ", scratchcards);
+        console.log("");
       }
 
       winning.clear();
@@ -197,10 +190,14 @@ const second = (input: string) => {
     }
   }
   console.log("scratchcards: ", scratchcards);
+  result = scratchcards.reduce((acc, curr) => acc + curr, 0);
   console.log("result: ", result);
   return result;
 };
 
-const expectedSecondSolution = "solution 2";
+// 5647978 too low
+// 8467762 - OFF BY ONE!!1)))
+// 8467763 too high
+const expectedSecondSolution = "8467762";
 
 export { first, expectedFirstSolution, second, expectedSecondSolution };
