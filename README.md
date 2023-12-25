@@ -6,7 +6,7 @@ _The objective is to reach '50 stars' ~ 50 problems solved by Christmas_
 
 ###### Current progress
 
-**10/50** :star:
+**11/50** :star:
 
 [link to this year's problems](https://adventofcode.com)
 
