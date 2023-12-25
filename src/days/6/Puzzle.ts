@@ -70,7 +70,7 @@ const first = (input: string) => {
   return totalWays;
 };
 
-const expectedFirstSolution = "288";
+const expectedFirstSolution = "1159152";
 
 const second = (input: string) => {
   /*
@@ -112,6 +112,6 @@ const second = (input: string) => {
   return result;
 };
 
-const expectedSecondSolution = "solution 2";
+const expectedSecondSolution = "41513103";
 
 export { first, expectedFirstSolution, second, expectedSecondSolution };
