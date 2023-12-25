@@ -568,13 +568,6 @@ const second = (input: string) => {
         processingSoilToFertilizerMap = true;
         // console.log("seed to soil map finished processing...");
         // console.log("Seed to Soil Map:");
-        // for (const seed of seeds) {
-        //   const range = seedToSoilRanges.find(
-        //     (r) => r.start <= seed && r.end > seed
-        //   );
-        //   const soil = range ? seed + range.offset : seed;
-        //   console.log(`Seed ${seed} -> Soil ${soil}`);
-        // }
       } else if (processingSoilToFertilizerMap && line.match(/\d/)) {
         const [fertilizerRangeStart, soilRangeStart, rangeLength] = line
           .split(" ")
@@ -589,21 +582,6 @@ const second = (input: string) => {
         processingFertilizerToWaterMap = true;
         // console.log("soil to fertilizer map finished processing...");
         // console.log("Soil to Fertilizer Map:");
-        // for (const seed of seeds) {
-        //   const soilRange = seedToSoilRanges.find(
-        //     (r) => r.start <= seed && r.end > seed
-        //   );
-        //   const soil = soilRange ? seed + soilRange.offset : seed;
-        //   const fertilizerRange = soilToFertilizerRanges.find(
-        //     (r) => r.start <= soil && r.end > soil
-        //   );
-        //   const fertilizer = fertilizerRange
-        //     ? soil + fertilizerRange.offset
-        //     : soil;
-        //   console.log(
-        //     `Seed ${seed} -> Soil ${soil} -> Fertilizer ${fertilizer}`
-        //   );
-        // }
       } else if (processingFertilizerToWaterMap && line.match(/\d/)) {
         const [waterRangeStart, fertilizerRangeStart, rangeLength] = line
           .split(" ")
@@ -618,29 +596,6 @@ const second = (input: string) => {
         processingWaterToLightMap = true;
         // console.log("fertilizer to water map finished processing...");
         // console.log("Fertilizer to Water Map:");
-        // for (const seed of seeds) {
-        //   const soilRange = seedToSoilRanges.find(
-        //     (r) => r.start <= seed && r.end > seed
-        //   );
-        //   const soil = soilRange ? soilRange.offset + seed : seed;
-
-        //   const fertilizerRange = soilToFertilizerRanges.find(
-        //     (r) => r.start <= soil && r.end > soil
-        //   );
-        //   const fertilizer = fertilizerRange
-        //     ? fertilizerRange.offset + soil
-        //     : soil;
-
-        //   const waterRange = fertilizerToWaterRanges.find(
-        //     (r) => r.start <= fertilizer && r.end > fertilizer
-        //   );
-        //   const water = waterRange
-        //     ? waterRange.offset + fertilizer
-        //     : fertilizer;
-        //   console.log(
-        //     `Seed ${seed} -> Soil ${soil} -> Fertilizer ${fertilizer} -> Water ${water}`
-        //   );
-        // }
       } else if (processingWaterToLightMap && line.match(/\d/)) {
         const [lightRangeStart, waterRangeStart, rangeLength] = line
           .split(" ")
@@ -655,34 +610,6 @@ const second = (input: string) => {
         processingLightToTemperatureMap = true;
         // console.log("water to light map finished processing...");
         // console.log("Water to Light Map:");
-        // for (const seed of seeds) {
-        //   const soilRange = seedToSoilRanges.find(
-        //     (r) => r.start <= seed && r.end > seed
-        //   );
-        //   const soil = soilRange ? soilRange.offset + seed : seed;
-
-        //   const fertilizerRange = soilToFertilizerRanges.find(
-        //     (r) => r.start <= soil && r.end > soil
-        //   );
-        //   const fertilizer = fertilizerRange
-        //     ? fertilizerRange.offset + soil
-        //     : soil;
-
-        //   const waterRange = fertilizerToWaterRanges.find(
-        //     (r) => r.start <= fertilizer && r.end > fertilizer
-        //   );
-        //   const water = waterRange
-        //     ? waterRange.offset + fertilizer
-        //     : fertilizer;
-
-        //   const lightRange = waterToLightRanges.find(
-        //     (r) => r.start <= water && r.end > water
-        //   );
-        //   const light = lightRange ? lightRange.offset + water : water;
-        //   console.log(
-        //     `Seed ${seed} -> Soil ${soil} -> Fertilizer ${fertilizer} -> Water ${water} -> Light ${light}`
-        //   );
-        // }
       } else if (processingLightToTemperatureMap && line.match(/\d/)) {
         const [temperatureRangeStart, lightRangeStart, rangeLength] = line
           .split(" ")
@@ -697,41 +624,6 @@ const second = (input: string) => {
         processingTemperatureToHumidityMap = true;
         // console.log("light to temperature map finished processing...");
         // console.log("Light to Temperature Map:");
-        // for (const seed of seeds) {
-        //   const soilRange = seedToSoilRanges.find(
-        //     (r) => r.start <= seed && r.end > seed
-        //   );
-        //   const soil = soilRange ? soilRange.offset + seed : seed;
-
-        //   const fertilizerRange = soilToFertilizerRanges.find(
-        //     (r) => r.start <= soil && r.end > soil
-        //   );
-        //   const fertilizer = fertilizerRange
-        //     ? fertilizerRange.offset + soil
-        //     : soil;
-
-        //   const waterRange = fertilizerToWaterRanges.find(
-        //     (r) => r.start <= fertilizer && r.end > fertilizer
-        //   );
-        //   const water = waterRange
-        //     ? waterRange.offset + fertilizer
-        //     : fertilizer;
-
-        //   const lightRange = waterToLightRanges.find(
-        //     (r) => r.start <= water && r.end > water
-        //   );
-        //   const light = lightRange ? lightRange.offset + water : water;
-
-        //   const temperatureRange = lightToTemperatureRanges.find(
-        //     (r) => r.start <= light && r.end > light
-        //   );
-        //   const temperature = temperatureRange
-        //     ? temperatureRange.offset + light
-        //     : light;
-        //   console.log(
-        //     `Seed ${seed} -> Soil ${soil} -> Fertilizer ${fertilizer} -> Water ${water} -> Light ${light} -> Temperature ${temperature}`
-        //   );
-        // }
       } else if (processingTemperatureToHumidityMap && line.match(/\d/)) {
         const [humidityRangeStart, temperatureRangeStart, rangeLength] = line
           .split(" ")
@@ -746,47 +638,6 @@ const second = (input: string) => {
         processingHumidityToLocationMap = true;
         // console.log("temperature to humidity map finished processing...");
         // console.log("Temperature to Humidity Map:");
-        // for (const seed of seeds) {
-        //   const soilRange = seedToSoilRanges.find(
-        //     (r) => r.start <= seed && r.end > seed
-        //   );
-        //   const soil = soilRange ? soilRange.offset + seed : seed;
-
-        //   const fertilizerRange = soilToFertilizerRanges.find(
-        //     (r) => r.start <= soil && r.end > soil
-        //   );
-        //   const fertilizer = fertilizerRange
-        //     ? fertilizerRange.offset + soil
-        //     : soil;
-
-        //   const waterRange = fertilizerToWaterRanges.find(
-        //     (r) => r.start <= fertilizer && r.end > fertilizer
-        //   );
-        //   const water = waterRange
-        //     ? waterRange.offset + fertilizer
-        //     : fertilizer;
-
-        //   const lightRange = waterToLightRanges.find(
-        //     (r) => r.start <= water && r.end > water
-        //   );
-        //   const light = lightRange ? lightRange.offset + water : water;
-
-        //   const temperatureRange = lightToTemperatureRanges.find(
-        //     (r) => r.start <= light && r.end > light
-        //   );
-        //   const temperature = temperatureRange
-        //     ? temperatureRange.offset + light
-        //     : light;
-        //   const humidityRange = temperatureToHumidityRanges.find(
-        //     (r) => r.start <= temperature && r.end > temperature
-        //   );
-        //   const humidity = humidityRange
-        //     ? humidityRange.offset + temperature
-        //     : temperature;
-        //   console.log(
-        //     `Seed ${seed} -> Soil ${soil} -> Fertilizer ${fertilizer} -> Water ${water} -> Light ${light} -> Temperature ${temperature} -> Humidity ${humidity}`
-        //   );
-        // }
       } else if (processingHumidityToLocationMap && line.match(/\d/)) {
         const [locationRangeStart, humidityRangeStart, rangeLength] = line
           .split(" ")
