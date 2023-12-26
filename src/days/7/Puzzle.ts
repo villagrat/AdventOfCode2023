@@ -280,13 +280,15 @@ const second = (input: string) => {
       const jokerCount = counts.get("J")!;
       counts.delete("J");
 
-      const maxCountCard = Array.from(counts.entries()).reduce((a, b) =>
-        a[1] > b[1] ? a : b
-      )[0];
-      counts.set(maxCountCard, (counts.get(maxCountCard) || 0) + jokerCount);
+      if (counts.size > 0) {
+        const maxCountCard = Array.from(counts.entries()).reduce((a, b) =>
+          a[1] > b[1] ? a : b
+        )[0];
+        counts.set(maxCountCard, (counts.get(maxCountCard) || 0) + jokerCount);
+      }
     }
-
     const sortedCounts = Array.from(counts.values()).sort((a, b) => b - a);
+    sortedCounts[0] += counts.get("J") || 0; // Add Jokers to the highest count
 
     if (sortedCounts[0] === 5) {
       return handStrength["Five of a kind"];
@@ -304,7 +306,6 @@ const second = (input: string) => {
       return handStrength["High card"];
     }
   }
-
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n" || i === input.length - 1) {
       const line = input.slice(startIdx, i + 1);
@@ -331,9 +332,10 @@ const second = (input: string) => {
 
   console.log("hands: ", hands);
   // Sort hands by strength
-  // For equal strength hands, compare the first X cards each hand until one is stronger
   const sortedByStrength = hands.sort((h1, h2) => h2.strength - h1.strength);
   console.log("sortedByStrength: ", sortedByStrength);
+
+  // For equal strength hands, compare the first X cards each hand until one is stronger
   const sortedByStrengthAndCards = sortedByStrength.sort((h1, h2) => {
     if (h1.strength !== h2.strength) {
       return h2.strength - h1.strength;
@@ -365,6 +367,9 @@ const second = (input: string) => {
   return result;
 };
 
-const expectedSecondSolution = "solution 2";
+// 250757288
+// 250765012 too high
+// 251287184 too high
+const expectedSecondSolution = "250757288";
 
 export { first, expectedFirstSolution, second, expectedSecondSolution };
