@@ -21,13 +21,7 @@ const first = (input: string) => {
       const line = input.slice(startIdx, i);
       // console.log(line);
       // console.log("");
-      const condition = line.match(/\d/);
-      // console.log(`condition: ${condition}`);
-      if (condition) {
-        const calculatedValue = condition
-        // console.log(`Calculated value is: ${calculatedValue}`);
-        result += Number(calculatedValue);
-      }
+      
       startIdx = i + 1;
       // console.log("");
       // console.log("-------------------------------------------------------------------------------------------------------------------------------");
@@ -63,13 +57,7 @@ const second = (input: string) => {
       const line = input.slice(startIdx, i);
       // console.log(line);
       // console.log("");
-      const condition = line.match(/\d/);
-      // console.log(`condition: ${condition}`);
-      if (condition) {
-        const calculatedValue = condition
-        // console.log(`Calculated value is: ${calculatedValue}`);
-        result += Number(calculatedValue);
-      }
+      
       startIdx = i + 1;
       // console.log("");
       // console.log("-------------------------------------------------------------------------------------------------------------------------------");
