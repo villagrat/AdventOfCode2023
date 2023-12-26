@@ -18,7 +18,7 @@ const first = (input: string) => {
   let result = 0;
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n" || i === input.length - 1) {
-      const line = input.slice(startIdx, i);
+      const line = input.slice(startIdx, i + 1);
       // console.log(line);
       // console.log("");
       
@@ -54,7 +54,7 @@ const second = (input: string) => {
   let result = 0;
   for (let i = 0; i < input.length; i++) {
     if (input[i] === "\n" || i === input.length - 1) {
-      const line = input.slice(startIdx, i);
+      const line = input.slice(startIdx, i + 1);
       // console.log(line);
       // console.log("");
       
